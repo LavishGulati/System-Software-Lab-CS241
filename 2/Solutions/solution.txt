@@ -1,0 +1,13 @@
+Problem 1:  touch iitg.txt
+            sccs create iitg.txt
+
+            sccs edit iitg.txt                                // Repeat 5 times
+            echo 'hello1' >> iitg.txt                         // Repeat 5 times
+            sccs delta iitg.txt                               // Repeat 5 times
+
+Problem 2:  sccs prt iitg.txt
+            sccs cdc -r1.3 iitg.txt
+
+Problem 3:  sccs get -m -p iitg.txt | grep '^1.4'
+
+Problem 4: 
