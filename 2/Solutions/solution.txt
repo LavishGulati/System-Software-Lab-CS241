@@ -10,4 +10,13 @@ Problem 2:  sccs prt iitg.txt
 
 Problem 3:  sccs get -m -p iitg.txt | grep '^1.4'
 
-Problem 4: 
+Problem 4: sccs get -m -p iitg.txt
+           sccs get iitg.txt
+
+Problem 5: sccs get -c180818170000 iitg.txt
+
+Problem 6: sccs edit -x1.2,1.4 iitg.txt
+
+Problem 7: ""main: main.c
+                gcc main.c -o main""
+           make                       
