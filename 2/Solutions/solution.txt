@@ -17,6 +17,26 @@ Problem 5: sccs get -c180818170000 iitg.txt
 
 Problem 6: sccs edit -x1.2,1.4 iitg.txt
 
-Problem 7: ""main: main.c
-                gcc main.c -o main""
-           make                       
+Problem 7: all: main.c
+                gcc main.c -o main
+
+           clean:
+                rm main
+
+Problem 8: all: cube.o rectangle.o cylinder.o circle.o
+                gcc -o shapes cube.o rectangle.o cylinder.o circle.o
+
+           cube.o: main1.c main2.c main3.c
+                gcc -c main1.c main2.c main3.c
+
+           rectangle.o: main4.c main5.c
+                gcc -c main4.c main5.c
+
+           cylinder.o: main6.c main7.c
+                gcc -c main6.c main7.c
+
+           circle.o: main8.c main9.c
+                gcc -c main8.c main9.c
+
+           clean:
+                rm cube.o rectangle.o cylinder.o circle.o shapes
