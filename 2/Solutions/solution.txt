@@ -25,25 +25,44 @@ Problem 7: all: main.c
            clean:
                 rm main
 
-Problem 8: all: cube.o rectangle.o cylinder.o circle.o
-                gcc -o shapes cube.o rectangle.o cylinder.o circle.o
+Problem 8: all: cube.o rectangle.o circle.o sphere.o main.c
+	           gcc cube.o rectangle.o circle.o sphere.o main.c -o shapes
 
-           cube.o: main1.c main2.c main3.c
-                gcc -c main1.c main2.c main3.c
+           cube.o: cube.c connect.h
+	           gcc -c cube.c -o cube.o
 
-           rectangle.o: main4.c main5.c
-                gcc -c main4.c main5.c
+           rectangle.o: rectangle.c connect.h
+	           gcc -c rectangle.c -o rectangle.o
 
-           cylinder.o: main6.c main7.c
-                gcc -c main6.c main7.c
+circle.o: circle.c connect.h
+	gcc -c circle.c -o circle.o
 
-           circle.o: main8.c main9.c
-                gcc -c main8.c main9.c
+sphere.o: sphere.c connect.h
+	gcc -c sphere.c -o sphere.o
+
+clean:
+	rm *.o shapes
+
+Problem 9: HEADER=header.h
+           CC=gcc
+           MAIN=main.c
+
+           all: cube.o rectangle.o circle.o sphere.o $(MAIN)
+	           gcc *.o $(MAIN) -o shapes
+
+           %.o: %.c $(HEADER)
+	           $(CC) -c %.c -o %.o
+
+           echo:
+               @echo "\033[31mHello World\033[0m"
+               @echo "\033[32m"HEADER $(HEADER)"\033[0m"
+               @echo "\033[33m"CC $(CC)"\033[0m"
+               @echo "\033[34m"MAIN $(MAIN)"\033[0m"
 
            clean:
-                rm cube.o rectangle.o cylinder.o circle.o shapes
+               rm *.o shapes
 
-Problem 9:
+Problem 10: 
 
 Problem 12: r
             b 14
@@ -95,3 +114,6 @@ Problem 16: gcc -g MatrixMultiply.c
             display D[0][15]
             display D[15][0]    // D[15][0] is not equal to zero. Thus, problem in memset
             *D is initialized by two for loops instead of memset*
+            * &D is replaced by *D *
+            * double *A_row = A[i]; instead of uintptr_t line *
+            * A_row+k instead of A_row+k*8

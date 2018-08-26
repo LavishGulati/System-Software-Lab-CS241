@@ -30,4 +30,16 @@ $< => Name of the related file that caused action (current
       dependency)
 $* => Prefix shared by target and dependent files (current
       dependency without extension)
-$^ => 
+
+% => Specifies all files one by one
+
+HEADER=header.h     // Declare macro which contains value header.h
+
+$(HEADER)   // Returns value contained by the macro HEADER
+
+@echo HEADER $(HEADER)  // Executes echo command on shell and displays output:
+                           HEADER header.h
+
+@echo "\033[31m"HEADER $(HEADER)"\033[0m"   // Display text in different colors
+                                               30-37 for foreground colors
+                                               40-47 for background colors
