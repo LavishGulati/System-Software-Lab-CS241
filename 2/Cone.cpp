@@ -19,8 +19,9 @@ int main()
           surfaceArea,                    // its surface area
           volume;                         // its volume
   GetInputs(height, radius, length);
+  curvedSurfaceArea = PI * radius * length;
   surfaceArea = curvedSurfaceArea + PI * radius * radius;
-  curvedSurfaceArea = PI * radius * length; 
+  // curvedSurfaceArea = PI * radius * length;
   volume = PI * radius * radius * height / 3.0;
   DisplayOutput(height, radius, length, curvedSurfaceArea, surfaceArea, volume);
   return 0;

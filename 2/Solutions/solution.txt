@@ -9,9 +9,11 @@ Problem 2:  sccs prt iitg.txt
             sccs cdc -r1.3 iitg.txt
 
 Problem 3:  sccs get -m -p iitg.txt | grep '^1.4'
+            sccs sccsdiff -r1.4 -r1.5 iitg.txt  **
 
 Problem 4: sccs get -m -p iitg.txt
            sccs get iitg.txt
+
 
 Problem 5: sccs get -c180818170000 iitg.txt
 
@@ -41,4 +43,55 @@ Problem 8: all: cube.o rectangle.o cylinder.o circle.o
            clean:
                 rm cube.o rectangle.o cylinder.o circle.o shapes
 
-Problem 9: 
+Problem 9:
+
+Problem 12: r
+            b 14
+            r
+            c
+
+Problem 13: b 14
+            r
+            n
+            step
+            n       // Repeat and input the values
+            p H
+            p L
+            p R
+            display surfaceArea
+            display radius
+            display curvedSurfaceArea
+            n       // Repeat
+
+Problem 14: b DisplayOutput
+            b main
+            n // Repeat
+            step
+            n // Repeat
+            display .....   // Repeat
+            info local
+            undisplay 2
+            undisplay 3     // Repeat
+            info display
+            step
+            n               // Repeat
+
+Problem 15: *Change position of free to outside while loop*
+
+            gcc -g fileDirOpen.c
+            gdb ./a.out /home/cse
+            b main
+            n   // Repeat
+            step
+            n   // Repeat
+            *Segmentation fault occurs in 'free' command*
+            *free command is shifted outside of while loop*
+
+Problem 16: gcc -g MatrixMultiply.c
+            gdb ./a.out
+            b main
+            n   // Repeat
+            display D[0][0]
+            display D[0][15]
+            display D[15][0]    // D[15][0] is not equal to zero. Thus, problem in memset
+            *D is initialized by two for loops instead of memset*
