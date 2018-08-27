@@ -43,3 +43,9 @@ $(HEADER)   // Returns value contained by the macro HEADER
 @echo "\033[31m"HEADER $(HEADER)"\033[0m"   // Display text in different colors
                                                30-37 for foreground colors
                                                40-47 for background colors
+
+LIBCC=ar rc
+libA.a: cube.o rectangle.o
+    $(LIBCC) $@ $^          // Creates library file libA.a
+
+make -f combine.mk      // Specifies makefile as combine.mk

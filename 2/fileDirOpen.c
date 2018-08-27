@@ -15,7 +15,7 @@
 void
 list (const char *dirname)
 {
-  char buffer[32];
+  char buffer[1000];
   DIR *directory;
   struct dirent *file;
 
@@ -30,9 +30,9 @@ list (const char *dirname)
 
       puts(buffer);
 
-      free(file);
+      // free(file);
     }
-
+    free(file);
   closedir(directory);
 }
 

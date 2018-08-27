@@ -1,4 +1,5 @@
-Problem 1:  touch iitg.txt
+Problem 1:  mkdir SCCS
+            touch iitg.txt
             sccs create iitg.txt
 
             sccs edit iitg.txt                                // Repeat 5 times
@@ -62,7 +63,80 @@ Problem 9: HEADER=header.h
            clean:
                rm *.o shapes
 
-Problem 10: 
+Problem 10: HEADER=connect.h
+            CC=gcc
+            LIBCC=ar rc
+            MAIN=main.c
+            HEADERPATH=test/macro/libs2/
+
+            all: $(MAIN) libA.a libB.a
+	            $(CC) $^ -o shapes
+
+            libA.a: cube.o rectangle.o
+	            $(LIBCC) $@ $^
+
+            libB.a: sphere.o circle.o
+	            $(LIBCC) $@ $^
+
+            %.o: %.c $(HEADERPATH)$(HEADER)
+	            $(CC) -c $< -o $@
+
+            echo:
+	            @echo "\033[31mHello World\033[0m"
+	            @echo "\033[32m"HEADER $(HEADER)"\033[0m"
+	            @echo "\033[33m"CC $(CC)"\033[0m"
+	            @echo "\033[34m"MAIN $(MAIN)"\033[0m"
+
+            clean:
+	            rm *.o *.a shapes
+
+Problem 11: **mkfl.mk**
+            LIBCC=ar rc
+            HEADER=connect.h
+            CC=gcc
+            MAIN=main.c
+            HEADERPATH=test/macro/libs2/
+
+            all: $(MAIN) cube.o sphere.o rectangle.o circle.o
+
+            %.o: %.c $(HEADERPATH)$(HEADER)
+	            $(CC) -c $< -o $@
+
+            clean:
+                rm *.o shapes
+
+            **makefile**
+            LIBCC=ar rc
+            HEADER=connect.h
+            CC=gcc
+            MAIN=main.c
+            HEADERPATH=test/macro/libs2/
+
+            all: $(MAIN) libA.a libB.a
+	            $(CC) $^ -o shapes
+
+            libA.a: cube.o rectangle.o
+	            $(LIBCC) $@ $^
+
+            libB.a: sphere.o circle.o
+	            $(LIBCC) $@ $^
+
+            clean:
+                rm *.a
+
+            **combine.mk**
+            all: mkfl.mk makefile
+	            make -f mkfl.mk
+	            make
+
+            clean:
+                make -f mkfl.mk clean
+                make clean
+
+
+            $ make -f combine.mk
+            $ make -f combine.mk clean
+
 
 Problem 12: r
             b 14
