@@ -30,9 +30,9 @@ list (const char *dirname)
 
       puts(buffer);
 
-      // free(file);
+      free(file);
     }
-    free(file);
+    // free(file);
   closedir(directory);
 }
 

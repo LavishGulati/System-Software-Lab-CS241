@@ -49,3 +49,57 @@ libA.a: cube.o rectangle.o
     $(LIBCC) $@ $^          // Creates library file libA.a
 
 make -f combine.mk      // Specifies makefile as combine.mk
+
+CC=g++
+LIBCC=ar rc
+HEADERPATH=./test/macro/lib2/
+HEADER=connect.h
+CFLAGS=-I$(HEADERPATH)          // -I is used to specify path to search for files during
+                                    compilation
+MAIN=main.cpp
+ODIR=obj
+_OBJ= cube.o square.o cone.o sphere.o
+OBJ=$(patsubst %,$(ODIR)/%,$(_OBJ))     // Substitutes the pattern
+                                            Puts $(ODIR)/$(_OBJ) wherever $(_OBJ) appears
+
+all: $(MAIN) $(OBJ)
+
+$(ODIR)/%.o: %.cpp $(HEADERPATH)$(HEADER)
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+clean:
+	rm $(ODIR)/*.o
+
+
+
+all: $(MAIN) lib1.a lib2.a
+    $(CC) $^ -o $@ $(CFLAGS)
+
+lib1.a: $(OBJ1)
+    $(LIBCC) $@ $^
+
+lib2.a: $(OBJ2)
+    $(LIBCC) $@ $^
+
+$(ODIR)/%.o: %.cpp $(HEADERPATH)$(HEADER)
+    $(CC) -c $< -o $@ $(CFLAGS)
+
+target:                                 // for loop in makefile
+    @for x in 1 2 3 4 5 ; do \
+    echo $$x ; \
+    done
+
+echo:
+    @echo HEADER $(HEADER)
+    @echo vakul gupta
+    @echo "\033[32mvakul gupta"
+    @echo "bjwejwbewje"
+
+clean:                                  // if else in makefile
+ifeq ($(CC),g+++)
+    rm $(ODIR)/*.o all *.a
+else ifneq ($(CC),g++)
+    @echo "LOL"
+else
+    @echo "LOL2"
+endif

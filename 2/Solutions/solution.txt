@@ -190,4 +190,4 @@ Problem 16: gcc -g MatrixMultiply.c
             *D is initialized by two for loops instead of memset*
             * &D is replaced by *D *
             * double *A_row = A[i]; instead of uintptr_t line *
-            * A_row+k instead of A_row+k*8
+            * A_row+k instead of A_row+k*8 *

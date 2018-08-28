@@ -57,21 +57,23 @@ static double B[R][C] =
 int
 main(void)
 {
-  double C[R][C];
+  double D[R][C];
 
   /* Intialize Matrix C with 0 */
-  memset(C, 0, R*C);
-
+  // memset(C, 0, R*C);
+  for(int i = 0; i < R; i++){
+      for(int j = 0; j < C; j++) D[i][j] = 0;
+  }
   /* Compute matrix multiplication */
   for (int i = 0; i < R; ++i)
     for (int j = 0; j < C; ++j)
       {
-        uintptr_t A_row = ((uintptr_t)A + i * 8);
+        uintptr_t A_row = ((uintptr_t)A + i * 8 * C);
         double *B_col = (B[0] + j);
-        double *C_element = (double *)(&C + (i * C + j));
+        double *D_element = (double *)(*D + (i * C + j));
 
         for (int k = 0; k < R; ++k)
-          *C_element += *(double *)(A_row + k * 8) * *(double *)(B_col + k * C);
+          *D_element += *(double *)(A_row + k * 8) * *(double *)(B_col + k * C);
       }
 
   /* Compare the value of C and B. As A is the identity matrix, C and B must be equal
@@ -79,7 +81,7 @@ main(void)
    */
   for (int i = 0; i < R; ++i)
     for (int j = 0; j < C; ++j)
-      if (C[i][j] != B[i][j])
+      if (D[i][j] != B[i][j])
         printf("Incorrect element at %d,%d\n", i, j);
 
   return 0;
