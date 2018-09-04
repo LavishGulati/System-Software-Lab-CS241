@@ -1,19 +1,18 @@
-Problem 1: mkdir dir
-           cd dir
-           git init
-
-OR
-
-           ssh cse@172.16.115.31
+Problem 1: ssh cse@172.16.115.31
            mkdir dir
            cd dir
            git init
            touch hello.c
+           nano hello.c
+
+           /*
            echo '#include <stdio.h>' > hello.c
            echo >> hello.c
            echo 'int main(){' >> hello.c
            echo 'printf("hello world\n");' >> hello.c
            echo '}' >> hello.c
+           */
+
            gcc hello.c
            ./a.out
            git status
@@ -24,31 +23,31 @@ OR
            git status
 
 Problem 2: git clone URL
-
-OR
-
+           -OR-
            git clone git+ssh://cse@172.16.115.31/~/LavishGulati/git
 
 Problem 3: git status
+           git diff
 
-Problem 4: echo '// Changes added v1' >> hello.c
+Problem 4: gcc hello.c
            git status
-           git diff hello.c
+           git diff
 
 Problem 5: git add .
-           echo '// Comments added v2' >> hello.c
+           /* echo '// Comments added v2' >> hello.c */
+           nano hello.c
            git status
-           git diff hello.c
+           git diff
 
-Problem 6: git add .
-           echo '// Comments added v3' >> hello.c
+Problem 6: /* echo '// Comments added v3' >> hello.c */
+           nano hello.c
            git status
-           git diff hello.c
+           git diff
 
 Problem 7: git commit -m "Added more changes to hello.c"
-           git clone git+ssh://cse@172.16.115.31/~/LavishGulati/git
            exit
-           git diff hello.c
+           git pull git+ssh://cse@172.16.115.31/~/LavishGulati/git
+           git diff
            cat hello.c
            git status
 
@@ -65,13 +64,12 @@ Problem 9: gcc hello.c -o output
            // rm output deletes the output file but doesnt stage it for commit
 
 Problem 10: git reset --hard commitID
-
             -OR-
-
             git revert commitID
+            -OR-
+            git reset --hard HEAD^  // HEAD^ means previous commit
+                                    // HEAD^^ means second last commit and so on ..
 
 Problem 11: git reset --hard commitID
-
             -OR-
-
             git revert commitID
