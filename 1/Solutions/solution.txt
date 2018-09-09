@@ -20,20 +20,40 @@ Problem 7:
     wc -l *.c
 
 Problem 8:
-    Part 1: groupadd developer
-            cat /etc/group
-            sudo useradd Abhishek -m -d /home/Abhishek -g developer -s /bin/bash
-            passwd Abhishek
+    Part 1: sudo su
+            sudo useradd Abhishek -m -d /home/Abhishek -s /bin/bash
+
+    Follow up: passwd Abhishek
+               su Abhishek
+
     Part 2: id Abhishek && finger Abhishek
             id Abhishek; finger Abhishek
-    Part 3: sudo useradd -d /home/Abhishek/second_user_home -g developer -s /bin/bash
-    Part 4:
+
+    Follow up: mkdir second_user_home
+               cd second_user_home
+               touch file1.txt
+               exit
+
+    Part 3: useradd Rishi -g "$(id -g Abhishek)" -d /home/Abhishek/second_user_home/ -s /bin/bash
+
+    Follow up: cd /home/Abhishek/second_user_home
+               touch file2.txt
+               su - Rishi
+               touch file3.txt
+               exit
+
+    Part 4: stat -c "%n %U %G" *.txt
 
 Problem 9:
-    Part 1: sudo usermod -l Sakshi Abhishek
-    Part 2: sudo groupmod -n developer2 developer
+    Part 1: usermod Abhishek -l Sakshi
+
+    Part 2: groupmod Abhishek -n Sakshi
+
     Part 3: usermod Sakshi -m -d /home/oman
+            usermod Rishi -d /home/oman/second_user_home/
+
     Part 4: usermod Sakshi -s /usr/sbin/nologin
+            su Sakshi
 
 Problem 10:
     Part 1: sudo userdel Sakshi > output.txt
