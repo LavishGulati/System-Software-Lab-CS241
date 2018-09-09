@@ -1,5 +1,5 @@
 Problem 1:
-    ls -r
+    ls -lr
 
 Problem 2:
     rm *.txt *.doc
@@ -14,7 +14,7 @@ Problem 5:
     ls *[b-y]
 
 Problem 6:
-    du dir
+    du -b dir
 
 Problem 7:
     wc -l *.c
