@@ -41,3 +41,10 @@ usermod Sakshi -md /home/oman   // Changes the home directory of
 
 usermod Sakshi -s /usr/sbin/nologin // Changes the shell of user
                                 to inhibit login
+
+userdel Sakshi    // Deletes the user Sakshi
+
+userdel -r Rishi    // Deletes the user Rishi along with its home
+                    directory
+
+groupdel Sakshi     // Deletes te group Sakshi
