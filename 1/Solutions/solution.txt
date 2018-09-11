@@ -57,8 +57,11 @@ Problem 9:
 
 Problem 10:
     Part 1: sudo userdel Sakshi > output.txt
+
     Part 2: sudo userdel -r Rishi > output.txt
+
     Part 3: groupdel Sakshi
+
     Part 4:
 
 Problem 11: cd /var/log
