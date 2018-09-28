@@ -34,7 +34,7 @@ git push       // Updates remote repository with the changes made in the local r
 
 git log     // Shows commit logs
 
-git revert      // Revert the changes of a particular commit and add a new commit with
+git revert ID      // Revert the changes of a particular commit and add a new commit with
                     the reverted changes
 
 git reset --hard  // Resets the working tree and the commit log

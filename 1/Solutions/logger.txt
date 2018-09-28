@@ -1,0 +1,1 @@
+logger -i 34567 -p auth.notice -s "Log it bc"

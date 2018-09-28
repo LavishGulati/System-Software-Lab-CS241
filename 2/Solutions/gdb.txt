@@ -46,7 +46,7 @@ en 2    // Enables 2nd breakpoint if it is disabled
 dis 2   // Disables 2nd breakpoint
 
 ignore rec_fxn 4    // Used for a recursive function. Ignores the first 4 breakpoints of
-                       the recursive function and enables the breakpoint on the 5th called
+                       the recursive function and enables the breakpoint on the 5th call
                        of the function
 
 set logging on/off     // Logs the output of the gdb into a file named gdb.txt
