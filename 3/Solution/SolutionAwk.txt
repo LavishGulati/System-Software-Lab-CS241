@@ -1,0 +1,10 @@
+1. awk '{ max=max+1 } END { print max}' sample.txt
+2. awk ' { if($2==515042969) { a[$3]++ } } END { for(b in a) { x=x+1 } {print x}  }' sample.txt
+3. awk ' { if($2==515042969) x=x+$9 } END { print x }' sample.txt //NOT SURE CONSIDERING MEMORY USAGE AS RAM
+4. awk ' { if($11==1) { print $0 } }' sample.txt
+5. awk ' { if($8>0.001 && $8<0.009) x=x+1  } END { print x }' sample.txt
+6. awk ' { if(length($0)>max) max=length($0) } END { print max }' sample.txt
+7. awk ' { x=x+1 } { if(x>=100 && x<=200) { print $2 " "  $8 " "  $9 " " $10 " " } }' sample.txt
+8. awk '{ if($7<=0) { print >> "sample0.txt" } } {if($7>0) {print >> "sample1.txt" } }' sample.txt
+9. 
+10. 

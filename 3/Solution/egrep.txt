@@ -4,3 +4,45 @@ ls | grep '.txt|.php'  // Lists files with extension .txt|.php
 
 ls | egrep '.txt|.php'  // Lists files with either .txt or .php
                             as extension
+
+ls -Rl | egrep rwxrwxrw-  // Lists all files/folders recursively in current directory
+                            which have specified permissions
+
+ls -lR | egrep Aug | wc -l  // Counts all files/folders last modified in Aug
+
+ls -lR | egrep -c Aug  // Counts all files/folders last modified in Aug
+
+du -m | egrep "^1[0-9]|^[2-9]"  // Lists all files/folders with size greater than 1 MB.
+        du -m lists all files/folders with size in MB. Next part of code lists all lines
+        starting with 1[0-9].. and starting with [2-9].. (excludes 1 MB)
+
+ls -l | egrep -vw "Sep|^total"  // Lists all files/folders not containing word 'Sep' and
+                                hence not last modified in Sep
+
+ls -l | egrep -vcw "Sep|^total"  // Counts all files/folders not containing word 'Sep' and
+                                hence not last modified in Sep
+
+egrep "z[a-z]a" words.txt  // Lists all words containing letter 'z' followed by any single
+                            character followed by letter 'a'
+
+egrep "apple|papaya|kiwi" words.txt  // Lists all words containing 'apple', 'papaya' or
+                                    'kiwi' as string or substring
+
+egrep "^abid" words.txt  // Lists all words starting with 'abid'
+
+egrep "^ever$" words.txt  // Lists all words ending with 'ever'
+
+egrep "[aeiou]{4,}" words.txt  // Lists all words with vowels repaeating at least 4 times
+                                consecutively
+
+egrep "[aeiou]{4}" words.txt  // Lists all words with vowels repeating exactly 4 times
+                                consecutively
+
+egrep "^.{8}$" words.txt  // Lists all words with 8 characters
+
+egrep "[a-z]{8}" words.txt  // Lists all words with 8 characters
+
+sort -r  // Sort in reverse order
+
+egrep "(^m|^n).*(oon)" words.txt  // Lists all words starting with 'm' or 'n' and
+                                    containing 'oon'
