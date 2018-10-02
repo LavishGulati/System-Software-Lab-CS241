@@ -1,0 +1,3 @@
+Problem 1:
+    i.  ls -Rl | egrep rwxrwxrw-
+    ii.

@@ -1,0 +1,6 @@
+grep -E is same as egrep
+
+ls | grep '.txt|.php'  // Lists files with extension .txt|.php
+
+ls | egrep '.txt|.php'  // Lists files with either .txt or .php
+                            as extension
