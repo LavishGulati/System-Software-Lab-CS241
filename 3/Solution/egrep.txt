@@ -46,3 +46,7 @@ sort -r  // Sort in reverse order
 
 egrep "(^m|^n).*(oon)" words.txt  // Lists all words starting with 'm' or 'n' and
                                     containing 'oon'
+
+-w  // Select only those lines containing matches that form whole words.
+
+-v  // Invert the sense of matching, to select non-matching lines

@@ -1,0 +1,46 @@
+// From sample.txt
+// Note some lines have only 10 inputs and have $4(machine-id) as missing!
+
+1) Count total number of lines without using NR of awk or wc command
+
+	awk -F" " 'BEGIN {count =0;} {count++;} END {print count;}   ' sample.txt
+
+2) Find the distinct number of tasks of the job whose job-id is "515042969"  
+		
+	awk -F" " ' $2 == "515042969" { if(!seen[$3]++) count++;  } END {print count;} ' sample.txt
+
+3) Find total memory usage of the job whose id is "515042969"
+	
+	awk -F" " ' $2 == "515042969" { sum += ($(NF-3)+$(NF-2)+$(NF-1)) } END {print sum;} ' sample.txt
+
+4) Print the records of the file, whose machine constraint is 1
+	
+	awk -F" " ' $NF == "1" {print NR,$0 } ' sample.txt
+
+5) 	Number of records whose CPU usage is between 0.001 and 0.009!
+	
+		awk -F" " ' $(NF-3) >= "0.001" && $(NF-3) <= "0.009" { count++; } END {print count;} ' sample.txt
+
+6) Command to find the length of the longest line present in the file!
+
+		awk -F" " ' {if(length > max) max = length} ; END {print max;} ' sample.txt
+
+7) Display the (job-id, CPU usage, RAM usage, and disk usage ) of records from line 100 to 200
+	
+	awk -F" " ' NR == 100, NR == 200 {print NR,$2, $(NF-3), $(NF-2), $(NF-1)} ' sample.txt
+
+8) Split the “sample.txt” file, so that all the records whose priority value is less
+   than and equal to “0” are in the file "sample0.txt", and the rest are in the file "sample1.txt".
+
+   // Priority is $(NF-4)
+
+ls
+
+   awk -F" " ' { print $(NF-4) } ' sample1.txt
+
+9)  Split the file “sample.txt” into multiple files at every 100th line . i.e., first 100
+	lines into File1, next 100 lines into File2 and so on.
+
+
+	// awk -F" " ' BEGIN {x = 0;count = 1;} { for(i=1;i<=NR;i++) if(count <=100) {count ++; print $0 >> "File_$x"} else {count = 1; x++;}  }   ' sample.txt
+
