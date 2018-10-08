@@ -1,0 +1,63 @@
+Problem 1:
+	
+1) ls -l | grep -E 'rwxrwxrw-'
+
+2) ls -l | grep -c "Aug"
+
+3) ls -l | awk -F" " 'BEGIN{mega=1048576} {$5 = $5/mega "MB"} {print}'
+   or
+   ls -l --block-size=M
+
+4) ls -l | grep -c -v -e "Sep" -e "total"
+
+
+Problem 2:
+	//use words.txt for this!	
+
+1) Write a command to list the output the name of words that contain the
+letter ’z’ followed by any single character, followed by a letter ’a’
+
+	egrep "z.a" words.txt 
+	// . is used to match any character except new line!
+
+2) Write a command to list all the words that contain ”apple”, ”papaya” and
+”kiwi” as a string or substring
+
+	egrep -e "apple" -e "papaya" -e "kiwi" words.txt
+	// -e is used for multiple pattern search
+
+3) Write a command to list all the words start with ”abid”.
+
+	grep "^abid" words.txt
+
+	// ^ is used to signify the start of a line!
+
+4) Write a command to list all the words that end with ”ever”
+
+	grep "ever$" words.txt
+	//$ is used to signify the end of a line!
+
+5) Write a command to list all the words that contain 4 vowels (a,e,i,o and u) in a  	consecutive manner (Note: the vowel sequence may be repeated).
+	
+	aeiou
+	egrep -e ".*a.*e.*i.*o.*" -e ".*a.*e.*i.*u.*" -e ".*a.*e.*o.*u.*" -e ".*a.*i.*o.*u.*" -e ".*e.*i.*o.*u.*" words.txt 
+
+	// (.*) can be used as a wild card match for any number of any characters
+	// (.+) can be used as a wild card match for atleast one charcater!
+
+
+6) Write a command to list all the words that are 8 characters long and print
+it in reverse alphabetic order.
+	
+	egrep "^.{8}$" words.txt | tac
+
+	// ^.{8} gives me all the words of length 8 present in the file
+	// tac which is opposite of cat would print the list in reverse alphabetic order
+
+
+7) Write a command to list all the words that start with letter ’m’ or ’n’ and
+	contain a string ”oon”.
+
+	egrep -c -e "^m.*oon.*" -e "^n.*oon.*" words.txt
+
+	// ^is that words start from m and .* is for any number of charcaters!
