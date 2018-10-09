@@ -1,0 +1,106 @@
+	//Using Multiple Files
+
+Problem 3
+
+1)Command to output the content of file email_old.txt to the new file email_new.txt with all ”ernet.in” replaced with ”ac.in”.
+
+	sed 's/ernet.in/ac.in/g' email_old.txt > email_new.txt
+
+	//g is used to indicate that changes shoudl be made to all the ernet.in and not just specfic!
+
+2) Replace all the WORDS "public" with "private" in the file QuizProgram.java
+
+	//Note that we have to replace words and not strings using sed!
+
+	sed 's/\bpublic\b/private/g' QuizProgram.java
+	sed 's/\<public\>/private/g' QuizProgram.java
+
+	// \b is used to match a word Boundary!
+
+3) Replace multiple '!' with a single full stop(period)
+
+	sed -e 's/\([!]\)\1\+/./g' -e 's/!/./g' msg.txt
+	sed 's/!!*/./g' msg.txt
+	sed -E 's/!{1,}/./g' msg.txt
+
+4) Change American time format (May 12, 2010) to European Time Format(12 May 2010)
+
+	sed -E 's/([A-Z][a-z]*) ([0-9]{2}), ([0-9]{4})/\2 \1 \3/g' Appointment_dates.txt
+
+	//{n} means that match exactly n times!
+	//{n,} means match atleast n times
+	//{n,m} means match atleast n times but not more than m times!
+
+	//[A-Z][a-z]{2} is equivalent to [A-Z][a-z][a-z] which means that first character must be an UPPER CASE letter followed by two lower case letters!
+
+5) Command to print the lines that do not contain the word “This” from the file 		hello.txt.
+
+	sed -n '/This/!p' hello.txt
+	//Will not remove spaces
+	sed -n '/This/!p' hello.txt | sed -n '/^[ ]*$/!p'
+	//The above command we also remove spaces
+
+6) For file comm_ind_wi_day3_second_ings.txt, do following questions:
+
+	A) Viewing a file from 10.3 to 10.5 range.
+
+	sed -n '2,4 p' comm_ind_wi_day3_second_ings.txt
+	or
+	sed -n '/10.5/,/10.3/p' comm_ind_wi_day3_second_ings.txt
+
+	B) View the entire file except the above range
+
+	sed -n '2,4 !p' comm_ind_wi_day3_second_ings.txt
+	or
+	sed -n '/10.5/,/10.3/!p' comm_ind_wi_day3_second_ings.txt
+
+	C) Print 5th line of the file
+
+	sed -n '5 p' comm_ind_wi_day3_second_ings.txt
+
+	D)  Print lines from 2nd line to 8th line.
+
+	sed -n '2,8 p' comm_ind_wi_day3_second_ings.txt
+
+	E)  Print from 9th line to end of file.
+
+	sed -n '9,$ p' comm_ind_wi_day3_second_ings.txt
+
+	F) Find and replace text ‘Ashwin’ with ‘Jadeja’ between line numbers 9 to 11
+
+	sed '9,11 s/Ashwin/Jadeja/g' comm_ind_wi_day3_second_ings.txt
+
+
+7) Replace Second Occurrence of "I" with "We" in msg.txt
+
+	sed 's/I/We/2' msg.txt
+
+8) Print "Roll: ", "Name: " and "Age: " in front of the given file
+
+ 	//File to be used is sed_practice
+
+ 	sed 's/\([A-Z]\)/Name: \1/I' sed_practice
+ 	sed 's/\([0-9]\{9\}\)/Roll: \1/' sed_practice
+ 	sed 's/\([0-9]\{2\}$\)/Age: \1/' sed_practice
+
+ 	FINAL COMMAND
+ 	sed -e 's/\([A-Z]\)/Name: \1/I' -e 's/\([0-9]\{9\}\)/Roll: \1/' -e 's/\([0-9]\{2\}$\)/Age: \1/' sed_practice
+
+
+9) Replace '1' by 'one', 2 by 'two' and '3' by 'three' in digit_word file
+
+	sed -e 's/1/one/g'  -e 's/2/two/g' -e 's/3/three/g' digit_word
+
+10) Delete all lines that doesn't contain any vowel in it!
+
+	//File to be used is vowel_fav.txt
+
+	sed '/[aeiou]/Id' vowel_fav.txt
+
+11) Replace only 3rd and 5th occurrence(overall)of word "apple iphone" with "samsung s8"
+
+
+
+12) Command to remove the first number of all lines that start with "@"
+
+	sed 's/@\([0-9]\)\([0-9]*\)/@\2/g' digit.txt
