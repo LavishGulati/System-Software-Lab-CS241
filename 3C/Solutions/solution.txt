@@ -23,8 +23,8 @@ Problem 11: awk '{for(i = 1; i <= NF/2; i++) {temp = $i; $i = $(NF-i+1)"\t"; $(N
 
 Problem 12: awk -v max=0 '{if(length($0) > max) {max = length($0); jobId = $2} } END {print jobId}' sample.txt
 
-Problem 13: awk '{for(i = 1; i <= NF/2; i++) {temp = $i; $i = $(NF-i+1)"\t"; $(NF-i+1) = temp"\t"} } {print $0}' hello.txt
+Problem 13: awk '{for(i = 1; i <= NF/2; i++) {temp = $i; $i = $(NF-i+1)"\t"; $(NF-i+1) = temp"\t"} } {print $0}' sample.txt
 
-Problem 14: awk '{ for(i = 1; i <= NF; i++) if($i != "Holiday") m[$i]++ } END {for(i in m) print i": \t"m[i] }' days.txt
+Problem 14: awk '{ for(i = 1; i <= NF; i++) if($i != "Holiday") m[$i]++ } END { for(i in m) print i": \t"m[i] }' days.txt
 
-Problem 15: awk '{ m[$1] = $0 } END {for(i in m) print m[i] }' line.txt
+Problem 15: awk '{ m[$1] = $0 } END { for(i in m) print m[i] }' line.txt

@@ -1,0 +1,34 @@
+<<c1
+...
+...
+...
+c1    // Multi line comment
+
+read name    // Read input and store it in variable 'name'
+
+# ...    // Single line comment
+
+chmod +x 1.sh    // To make a shell file executable
+
+whoami  // Displays the current username
+
+id -un  // Prints the current username
+        // -u = print only the effective user ID
+        // -n = print a name instead of a number
+
+date +"%d/%m/%Y"  // Displays date in the specified format
+                  // 22/10/2018
+                  // %Y = yyyy
+                  // %y = yy
+
+date +"%D"  // mm/dd/yy format
+
+date +"%T"  // Displays time = 16:29:29
+
+date +"%r"  // Displays time in 12-hour format = 07:56:05 PM
+
+date +"%H:%M"  // Displays time in HH:MM format = 00:50
+
+$((a+b+c+d))  // Compute sum of four numbers
+
+$(expr $a + $b + $c + $d)  // Compute sum of four numbers
