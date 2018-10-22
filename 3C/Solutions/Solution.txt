@@ -1,0 +1,19 @@
+Part A:
+    1. awk -v max=0 '{max++} END {print max}' sample.txt        -->     873
+    2. awk -v count=0 '{ if($2 == 515042969 && m[$3] == 0) {m[$3]++; count++} } END {print count}' sample.txt   -->     21
+    3. awk -v total=0 '{ if($2 == 515042969) total += $9 } END {print total}' sample.txt    --> 0.333457
+    4. awk '{ if ($11 == 1) print $0 }' sample.txt
+    5. awk '{if ($8 >= 0.001 && $8 <= 0.009) print $0 }' sample.txt     -->         150
+    6. awk -v max=0 '{ if ( length($0) > max ) max = length($0)} END {print max}' sample.txt    -->     76
+    7. awk 'NR==100,NR==200 {print $2" \t "$8" \t "$9" \t "$10}' sample.txt
+    8. awk '{ if ( $7 > 0 ) {print $0 >> "sample0.txt"} else {print $0 >>"sample1.txt"} }' sample.txt
+    9. awk '{print $0 >> "File"(int((NR-1)/100)+1)".txt"}' sample.txt
+    10. awk '{print NR"\t", $0}' abc.txt > temp; mv temp abc.txt
+    11. awk '{for (i=1; i<=NF/2; i++) {temp = $i; $i=$(NF-i+1)"\t"; $(NF-i+1)=temp"\t"} print $0 }' sample.txt 
+    12. awk '{if (length($0)>max) {max = length($0); job=$2}} END {print job}' sample.txt   -->     5402488769
+    13. awk '{for (i=1; i<=NF/2; i++) {temp = $i; $i=$(NF-i+1)"\t"; $(NF-i+1)=temp"\t"} print $0 }' sample.txt 
+    14. awk '{for(i=1; i<=NF; i++)  if($i!="Holiday") m[$i]++} END {for (b in m) print b ": \t" m[b]}' days.txt 
+    15. awk '{m[$1]=$0} END {for (i=1; i<=NR; i++) print m[i]}' line.txt 
+
+Part B:
+    1. 
