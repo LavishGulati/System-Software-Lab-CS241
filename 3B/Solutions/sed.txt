@@ -63,3 +63,8 @@ sed -E 's/1/one/g; s/2/two/g; s/3/three/g' digit_word.txt  // Combine multiple
 sed -n '/[AEIOUaeiou]/!p' vowel_fav.txt  // Deletes lines which contain any vowel
 
 sed '/[AEIOUaeiou]/d' vowel_fav.txt  // Deletes lines which contain any vowel
+
+tr '\n' '^' < mobile_reviews.txt | sed 's/Apple iphone/Samsung s8/5; s/Apple iphone/Samsung s8/3' | tr '^' '\n'
+  // tr substitutes a pattern with given pattern (as \n doesn't work in sed)
+
+sed -E '/This|^$/d' hello.txt  // Removes blank lines also
