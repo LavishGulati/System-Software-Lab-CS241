@@ -32,3 +32,90 @@ date +"%H:%M"  // Displays time in HH:MM format = 00:50
 $((a+b+c+d))  // Compute sum of four numbers
 
 $(expr $a + $b + $c + $d)  // Compute sum of four numbers
+
+
+if [ $# == 0 ]; then
+    echo "Both command line arguments are missing"
+elif [ $# == 1 ]; then
+    echo "One command line argument is missing"
+else
+    echo Sum of two numbers::$(($1+$2))
+fi
+    // if-else statements in bash
+    // $# return the number of command line arguments given
+    // $1 and $2 means first and second command line argument passed resp.
+
+
+for i in $@; do
+    if [[ $i -ge 10 && $i -le 20 ]]; then
+        total=$(($total+$i))
+    fi
+done
+    // for loop in bash
+    // $@ returns positional parameters (command line arguments)
+    // double square brackets "[]" required for multiple arguments
+    // -eq = equal to
+    // -ne = not equal to
+    // -gt = is greater than
+    // -ge = is greater than or equal to
+    // -lt = is less than
+    // -le = is less tha or equal to
+    // < (with double parentheses "()" )
+    // <= (with double parentheses "()" )
+    // > (with double parentheses "()" )
+    // >= (with double parentheses "()" )
+
+
+case "$op" in
+    "+")
+        echo Sum::$(($a+$b))
+        ;;
+    "-")
+        echo Difference::$(($a-$b))
+        ;;
+    "*")
+        echo Product::$(($a*$b))
+        ;;
+    "/")
+        echo Division::$(($a/$b))
+        ;;
+
+esac
+    // case statement in bash
+
+
+ num=$((1 + RANDOM%20))  // RANDOM returns a random number
+
+
+ for i in 1 2 3; do
+     read a
+     if [ $a -lt $num ]; then
+         echo Entered number is SMALLER
+     elif [ $a -gt $num ]; then
+         echo Entered number is BIGGER
+     else
+         echo Entered number is MATCHED
+         break
+     fi
+ done
+     // break statement in bash
+
+
+if [[ $(rev <<< "$s") == $s ]]; then
+    echo Yes. Length of the string: ${#s}
+else
+    echo No
+fi
+    // $(rev <<< "$s") returns the reversed string
+    // ${#s} returns the length of the string
+
+
+find ./$1/ -name "iitg.txt"  // Finds the given file in the directory
+
+ls -1  // Lists each file/directory in each line
+
+find -maxdepth 1 -size 0 | xargs rm  // Finds the files with size 0 and at max depth 1
+                                    and deletes them
+
+find -type f  // Finds files
+find -type d  // Finds directories
