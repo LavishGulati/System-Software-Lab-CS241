@@ -1,6 +1,6 @@
 #!/bin/bash
 
-: '
+:'
 Name: Mayank Baranwal
 Roll No: 170101084
 Semester: 3

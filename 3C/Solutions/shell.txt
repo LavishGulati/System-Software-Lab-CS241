@@ -4,6 +4,12 @@
 ...
 c1    // Multi line comment
 
+:'
+...
+...
+...
+'    // Multi line comment
+
 read name    // Read input and store it in variable 'name'
 
 # ...    // Single line comment
@@ -15,6 +21,8 @@ whoami  // Displays the current username
 id -un  // Prints the current username
         // -u = print only the effective user ID
         // -n = print a name instead of a number
+
+echo Today is: `date +"%d/%m/%Y"`  // Display date with echo command (use backticks "``")
 
 date +"%d/%m/%Y"  // Displays date in the specified format
                   // 22/10/2018
@@ -67,19 +75,10 @@ done
 
 
 case "$op" in
-    "+")
-        echo Sum::$(($a+$b))
-        ;;
-    "-")
-        echo Difference::$(($a-$b))
-        ;;
-    "*")
-        echo Product::$(($a*$b))
-        ;;
-    "/")
-        echo Division::$(($a/$b))
-        ;;
-
+    "+") echo "scale=3; $a+$b" | bc;;
+    "-") echo "scale=3; $a-$b" | bc;;
+    "*") echo "scale=3; $a*$b" | bc;;
+    "/") echo "scale=3; $a/$b" | bc;;
 esac
     // case statement in bash
 
@@ -119,3 +118,12 @@ find -maxdepth 1 -size 0 | xargs rm  // Finds the files with size 0 and at max d
 
 find -type f  // Finds files
 find -type d  // Finds directories
+
+echo "scale=2; $a*$b" | bc;;  // Scale sets the precision of the decimal value
+                              // bc works like expr and evaluates the expression value
+                              // For folat operations
+
+str2=$(echo $str | rev)    // Reverses the string and stores the value
+
+ls "$1" | grep -w "q7.sh"  // -w = Select only those lines containing matches that
+                            form whole words

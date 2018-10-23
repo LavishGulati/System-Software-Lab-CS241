@@ -1,3 +1,3 @@
 pwd
 whoami
-date +"%d/%m/%Y"
+echo Today is: `date +"%d/%m/%Y"`

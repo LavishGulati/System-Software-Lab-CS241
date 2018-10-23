@@ -4,16 +4,8 @@ read b
 echo Enter operation to be performed:
 read op
 case "$op" in
-    "+")
-        echo Sum::$(($a+$b))
-        ;;
-    "-")
-        echo Difference::$(($a-$b))
-        ;;
-    "*")
-        echo Product::$(($a*$b))
-        ;;
-    "/")
-        echo Division::$(($a/$b))
-        ;;
+    "+") echo "scale=3; $a+$b" | bc;;
+    "-") echo "scale=3; $a-$b" | bc;;
+    "*") echo "scale=3; $a*$b" | bc;;
+    "/") echo "scale=3; $a/$b" | bc;;
 esac

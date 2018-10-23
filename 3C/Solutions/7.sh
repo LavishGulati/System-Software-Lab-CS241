@@ -1,4 +1,4 @@
 find ./$1/ -name "iitg.txt"
-ls -1 | wc -l
-rm *.c
+ls ./$1/ -1 | wc -l
+rm $1/*.c
 find -maxdepth 1 -size 0 | xargs rm
