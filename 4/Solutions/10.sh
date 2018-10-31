@@ -9,13 +9,13 @@ IFS=""
 if [[ ! -f "output.txt" ]]; then
     for item in ${category[*]}
     do
-        printf "${item} " >> output.txt
+        printf "%-15s" ${item} >> output.txt
     done
     printf "\n" >> output.txt
 fi
 
 for item in ${input[*]}
 do
-    printf "${item}\t" >> output.txt
+    printf "%-15s" ${item} >> output.txt
 done
 printf "\n" >> output.txt

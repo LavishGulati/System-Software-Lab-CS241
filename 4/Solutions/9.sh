@@ -1,4 +1,4 @@
-ls -l | awk 'NR>1 { print $9"\t"$6" "$7"\t"$8"\t"$1 }'
+ls -l | awk 'NR>1 { printf "%-20s%s %-6s%-10s%-10s\n", $9, $6, $7, $8, $1 }'
 
 echo
 echo -n "Total no. of files: " | tee -a final_output.txt
