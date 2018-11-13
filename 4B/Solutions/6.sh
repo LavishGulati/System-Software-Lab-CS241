@@ -13,7 +13,7 @@ du -h ~/image
 
 for file in ~/image/*.pdf
 do
-    convert -resize 50%x50% $file ~/image/temp.pdf
+    convert -resize 25% $file ~/image/temp.pdf
     rm $file
     mv ~/image/temp.pdf $file
 done
