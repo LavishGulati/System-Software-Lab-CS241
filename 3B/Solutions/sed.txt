@@ -68,3 +68,5 @@ tr '\n' '^' < mobile_reviews.txt | sed 's/Apple iphone/Samsung s8/5; s/Apple iph
   // tr substitutes a pattern with given pattern (as \n doesn't work in sed)
 
 sed -E '/This|^$/d' hello.txt  // Removes blank lines also
+
+sed -e 's/1/one/g' -e 's/2/two/g' -e 's/3/three/g' digit_word

@@ -1,7 +1,8 @@
 Problem 1:
-    i.   ls -Rl | egrep rwxrwxrw-
-    ii.  ls -lR | egrep -c Aug
-    iii. du -m | egrep "^1[0-9]|^[2-9]"
+    i.   ls -l | egrep rwxrwxrw-
+    ii.  ls -l | egrep -cw Aug
+    iii. du -amd 1 | egrep "^1[0-9]|^[2-9]"
+         du -ahd 1 | awk '{if (index($1, "K") == 0 && $1 != 0) print $0 }'
     iv.  ls -l | egrep -vw "Sep|^total"; ls -l | egrep -vcw "Sep|^total"
 
 Problem 2:
@@ -11,15 +12,16 @@ Problem 2:
     iii. egrep "^abid" words.txt
     iv.  egrep "ever$" words.txt
     v.   egrep "[aeiou]{4,}" words.txt  // At least 4
-         egrep "[aeiou]{4}" words.txt  // At least 4
+         egrep "[aeiou]{4}" words.txt  // Exactly 4 for matching, but doesn't mean excludes at least 4 results
          egrep "([^aeiou]|\b)[aeiou]{4}([^aeiou]|\b)" words.txt  // Exactly 4
-    vi.  egrep "^[a-z]{8}$" words.txt | sort -r
+    vi.  egrep "^.{8}$" words.txt | sort -r
     vii. egrep "(^m|^n).*(oon)" words.txt
          egrep "(^m|^n).{0,}oon" words.txt
+         egrep "^[mn][a-z]*oon" words.txt
 
 Problem 3:
     i.   sed 's/ernet.in/ac.in/g' email_old.txt > email_new.txt
-    ii.  sed 's/\bpublic0/private/g' QuizProgram.java
+    ii.  sed 's/\bpublic\b/private/g' QuizProgram.java
          sed 's/\<public\>/private/g' QuizProgram.java
     iii. sed 's/!!*/./g' msg.txt
          sed -E 's/!{1,}/./g' msg.txt
@@ -37,3 +39,5 @@ Problem 4:
     viii. awk '{ if ( $7 > 0 ) {print $0 >> "sample0.txt"} else {print $0 >> "sample1.txt"} }' sample.txt
     ix.   awk '{print $0 >> "File"(int((NR-1)/100)+1)".txt"}' sample.txt
     x.    awk '{print NR"\t"$0}' abc.txt > temp; mv temp abc.txt
+          gawk -i inplace '{ print NR,$0 }' sample.txt
+          awk -i inplace '{ print NR,$0 }' sample.txt

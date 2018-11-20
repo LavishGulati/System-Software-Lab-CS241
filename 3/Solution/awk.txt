@@ -1,6 +1,6 @@
-awk '{print $0}' Example.txt  // Prints all columns of the txt file in each line
+awk '{print $0}' Example.txt  // Prints each row of the file
 
-awk '{print $1}' Example.txt  // Prints first column in each line
+awk '{print $1}' Example.txt  // Prints first column of each row
 
 awk '{print $1 $4}' Example.txt  // Prints column 1 and column 4
 
@@ -8,47 +8,45 @@ awk '{print $1 " " $4}' Example.txt  // Prints column 1 and 4 with blank space i
 
 awk '{print $1 "\t" $4}' Example.txt  // Prints column 1 and 4 with tab in between
 
-awk -F":" '{print $1}' /etc/passwd  // Specifies delimiter as ':' and prints column 1
+awk -F":" '{ }'  // Specifies delimiter as ':'
 
-awk -F":" 'NR==1,NR==10{print $1}' /etc/passwd  // Prints column 1 with rows 1 to 10
+awk 'NR==1,NR==10 { }' // Iterates through rows 1 and 10 only
 
-awk -F":" 'NR==1,NR==10{print $1,$3}' /etc/passwd  // Prints columns 1 and 3 with rows 1
-                                                to 10 separated by a space
+awk '{print $1,$3}' // Prints columns 1 and 3 separated by a space
 
-awk -F":" 'NR==1,NR==10{print length($1),$3}' /etc/passwd  // Prints no. of characters in
+awk '{print length($1)}'  // Prints no. of characters in
                                                         each element of column 1
 
-awk -F":" ' NR==1,NR==10{printf "%-8s %3d\n",$1,$3} ' /etc/passwd  // Specifies formatting
+awk '{ printf "%-8s %3d\n",$1,$3 } '  // Specifies formatting
                                                                     style as in C
 
-awk -F":" '
-BEGIN {printf "%-8s %-3s\n", "User", "UID"}
-NR==1,NR==10{printf "%-8s %3d\n",$1,$3} '  // Execute two statements of awk. BEGIN is used
-                                            to perform a task before the input scan
+awk '
+BEGIN { }
+NR==1,NR==10 { }
+'
+// Can also write awk code in this formatting style
+// BEGIN is used to perform a task before the input scan
 
-awk '/manager/ {print}' employee.txt  // Print lines which match the given pattern
+awk '/manager/ { }'  // Operate on lines which match the given pattern
 
-awk '{print NR,$0}' employee.txt  // Print line number before printing each line
+awk '{print NR,$0}'  // Print line number before printing each line
 
-awk '{print $1,$NF}' employee.txt  // Print first and last columns
+awk '{print $1,$NF}  // Print first and last columns
                                     NF => no. of columns (fields)
 
-awk 'NF > 0' geeksforgeeks.txt  // Print any non empty line
+awk 'NF > 0'  // Print any non empty line
 
-awk '{ if(length($0) > max) max = length($0)} END {print max}' geeksforgeeks.txt
-                                                    // To find length of the longest line
+awk 'END {print NR}' // Count total no. of lines in a file
 
-awk 'END {print NR}' geeksforgeeks.txt  // Count lines in a file
+awk 'length($0) > 10'  // Print lines with more than 10 characters
 
-awk 'length($0) > 10' geeksforgeeks.txt  // Print lines with more than 10 characters
-
-awk '{if($3 == "B6") print $0}' geeksforgeeks.txt  // Search for given string in a column
+awk '{if($3 == "B6") print $0}'  // Search for given string in a column
 
 awk 'BEGIN { for(i = 1; i <= 6; i++) print "Square of", i, "is", i*i;}'
                                                 // Print squares of first 6 numbers
 
-awk -v max=0 '{max++} END {print max}' sample.txt  // -v is used to assign values to
+awk -v max=0 'END {print max}'  // -v is used to assign values to
                     variables. END is used to perform a task at the end of the input scan
 
-awk -v count=0 '{ if($2 == 515042969 && m[$3] == 0) {m[$3]++; count++} } END {print count}' sample.txt
+awk -v count=0 '{ if(m[$3] == 0) {m[$3]++; count++} } END {print count}' sample.txt
     // Count no. of distinct elements in a column

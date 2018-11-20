@@ -1,0 +1,34 @@
+I. bash
+
+?? Write gcd code with recursion
+
+arr=(Hello World)  // Assigns entire array with blank space
+                    deilimiter
+
+arr[0]=Hello  // Assign values by using index
+arr[1]=World
+
+echo ${arr[0]}  // Accessing a value using index
+
+${arr[*]}  // All items in the array
+${!arr[*]}  // All indexes in the array
+${#arr[*]}  // Number of items in the array
+${#arr[0]}  // Length of item 0
+
+${array[$id]}  // Value at index stored in variable id
+
+array=(one two [3]=three)  // Stores 'three' at index 3 instead of
+                            index 2
+
+Difference between * and @
+    ${array[*]}  is equal to ${array[@]}  // Considers 'single item'
+                                                as 1 item only
+
+    arr=("${array[*]}")  // Considers all items of array as a
+                        single item
+
+    arr=(${array[*]})  // Considers all items of array as separate
+                        words. blank spaces are not ignored
+
+    arr=("${array[@]}")  // Returns each item of original array with
+                            blank space

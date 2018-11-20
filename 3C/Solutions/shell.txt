@@ -121,7 +121,7 @@ find -type d  // Finds directories
 
 echo "scale=2; $a*$b" | bc;;  // Scale sets the precision of the decimal value
                               // bc works like expr and evaluates the expression value
-                              // For folat operations
+                              // For float operations
 
 str2=$(echo $str | rev)    // Reverses the string and stores the value
 

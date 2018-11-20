@@ -18,6 +18,7 @@ Problem 6:
            sed '/10.5/,/10.3/d' comm_ind_wi_day3_second_ings.txt
         c. sed '5q;d' comm_ind_wi_day3_second_ings.txt
            sed -n '5p' comm_ind_wi_day3_second_ings.txt
+           sed -n '5'p comm_ind_wi_day3_second_ings.txt
         d. sed -n '2,8p;9q' comm_ind_wi_day3_second_ings.txt
            sed -n '2,8p' comm_ind_wi_day3_second_ings.txt
         e. sed -n '$p' comm_ind_wi_day3_second_ings.txt
@@ -33,8 +34,10 @@ Problem 9: sed -E 's/1/one/g; s/2/two/g; s/3/three/g' digit_word.txt
 
 Problem 10: sed '/[AEIOUaeiou]/d' vowel_fav.txt
             sed -n '/[AEIOUaeiou]/!p' vowel_fav.txt
+            sed -E '/([aeiouAEIOU]|^$)/d' vowel_fav.txt
 
 Problem 11: tr '\n' '^' < mobile_reviews.txt | sed 's/Apple iphone/Samsung s8/5; s/Apple iphone/Samsung s8/3' | tr '^' '\n'
             sed -z 's/Apple iphone/Samsung s8/5; s/Apple iphone/Samsung s8/3' mobile_reviews.txt
 
-Problem 12: sed -E 's/@([0-9]{1})/@/g' digits.txt
+Problem 12: sed -E 's/@([0-9]{1})/@/g' digits.txt  // To remove first digit
+            sed -E 's/@[0-9]*/@/g' digits.txt  // To remove first number
